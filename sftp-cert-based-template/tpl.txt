@@ -1,0 +1,7 @@
+https://portal.azure.com/#create/Microsoft.Template/uri/<uri>
+
+https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fsftpstgobpqipaqd4aci.blob.core.windows.net%2Fsftp-cert-template%2Fazuredeploy.json
+
+https://sftpstgobpqipaqd4aci.blob.core.windows.net/sftp-cert-template/azuredeploy.json
+
+70.106.221.24

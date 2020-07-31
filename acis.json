@@ -1,0 +1,216 @@
+[
+  {
+    "containers": [
+      {
+        "command": [
+          "az",
+          "storage",
+          "share",
+          "create",
+          "--name",
+          "sftpfileshare"
+        ],
+        "environmentVariables": [
+          {
+            "name": "AZURE_STORAGE_KEY",
+            "secureValue": null,
+            "value": "Yi/cNA+Zsuky/AMaeVqRLobLMYIBLrWAZxcCjdx2G5W3Blfunph20gXaFrtyqSJHAI3DBDI+5hM4AKFoQnSRKw=="
+          },
+          {
+            "name": "AZURE_STORAGE_ACCOUNT",
+            "secureValue": null,
+            "value": "sftpstgobpqipaqd4aci"
+          }
+        ],
+        "image": "microsoft/azure-cli:latest",
+        "instanceView": null,
+        "livenessProbe": null,
+        "name": "create-share",
+        "ports": [],
+        "readinessProbe": null,
+        "resources": {
+          "limits": null,
+          "requests": {
+            "cpu": 1.0,
+            "gpu": null,
+            "memoryInGb": 1.0
+          }
+        },
+        "volumeMounts": null
+      }
+    ],
+    "diagnostics": null,
+    "dnsConfig": null,
+    "id": "/subscriptions/035667f6-b989-4fc5-8067-be1887ef5dd8/resourceGroups/cloud-shell-storage-eastus/providers/Microsoft.ContainerInstance/containerGroups/create-share-group",
+    "identity": null,
+    "imageRegistryCredentials": null,
+    "instanceView": null,
+    "ipAddress": null,
+    "location": "eastus",
+    "name": "create-share-group",
+    "networkProfile": null,
+    "osType": "Linux",
+    "provisioningState": "Succeeded",
+    "resourceGroup": "cloud-shell-storage-eastus",
+    "restartPolicy": "OnFailure",
+    "tags": null,
+    "type": "Microsoft.ContainerInstance/containerGroups",
+    "volumes": null
+  },
+  {
+    "containers": [
+      {
+        "command": null,
+        "environmentVariables": [
+          {
+            "name": "SFTP_USERS",
+            "secureValue": null,
+            "value": "demo:demo!23$:1001"
+          }
+        ],
+        "image": "atmoz/sftp:latest",
+        "instanceView": null,
+        "livenessProbe": null,
+        "name": "sftp",
+        "ports": [
+          {
+            "port": 22,
+            "protocol": null
+          }
+        ],
+        "readinessProbe": null,
+        "resources": {
+          "limits": null,
+          "requests": {
+            "cpu": 2.0,
+            "gpu": null,
+            "memoryInGb": 1.0
+          }
+        },
+        "volumeMounts": [
+          {
+            "mountPath": "/home/demo/upload",
+            "name": "sftpvolume",
+            "readOnly": false
+          }
+        ]
+      }
+    ],
+    "diagnostics": null,
+    "dnsConfig": null,
+    "id": "/subscriptions/035667f6-b989-4fc5-8067-be1887ef5dd8/resourceGroups/cloud-shell-storage-eastus/providers/Microsoft.ContainerInstance/containerGroups/sftp-group",
+    "identity": null,
+    "imageRegistryCredentials": null,
+    "instanceView": null,
+    "ipAddress": {
+      "dnsNameLabel": "2yxmck7k6abqw",
+      "fqdn": "2yxmck7k6abqw.eastus.azurecontainer.io",
+      "ip": "52.149.238.144",
+      "ports": [
+        {
+          "port": 22,
+          "protocol": "TCP"
+        }
+      ],
+      "type": "Public"
+    },
+    "location": "eastus",
+    "name": "sftp-group",
+    "networkProfile": null,
+    "osType": "Linux",
+    "provisioningState": "Succeeded",
+    "resourceGroup": "cloud-shell-storage-eastus",
+    "restartPolicy": "OnFailure",
+    "tags": null,
+    "type": "Microsoft.ContainerInstance/containerGroups",
+    "volumes": [
+      {
+        "azureFile": {
+          "readOnly": false,
+          "shareName": "sftpfileshare",
+          "storageAccountKey": null,
+          "storageAccountName": "sftpstgobpqipaqd4aci"
+        },
+        "emptyDir": null,
+        "gitRepo": null,
+        "name": "sftpvolume",
+        "secret": null
+      }
+    ]
+  },
+  {
+    "containers": [
+      {
+        "command": null,
+        "environmentVariables": [],
+        "image": "mcr.microsoft.com/azuredocs/aci-hellofiles",
+        "instanceView": null,
+        "livenessProbe": null,
+        "name": "hellofiles",
+        "ports": [
+          {
+            "port": 80,
+            "protocol": "TCP"
+          }
+        ],
+        "readinessProbe": null,
+        "resources": {
+          "limits": null,
+          "requests": {
+            "cpu": 1.0,
+            "gpu": null,
+            "memoryInGb": 1.5
+          }
+        },
+        "volumeMounts": [
+          {
+            "mountPath": "/aci/logs/keys",
+            "name": "azurefile",
+            "readOnly": null
+          }
+        ]
+      }
+    ],
+    "diagnostics": null,
+    "dnsConfig": null,
+    "id": "/subscriptions/035667f6-b989-4fc5-8067-be1887ef5dd8/resourceGroups/shared-resource/providers/Microsoft.ContainerInstance/containerGroups/hellofiles",
+    "identity": null,
+    "imageRegistryCredentials": null,
+    "instanceView": null,
+    "ipAddress": {
+      "dnsNameLabel": "aci-mount-demo-123",
+      "fqdn": "aci-mount-demo-123.eastus.azurecontainer.io",
+      "ip": "104.45.180.96",
+      "ports": [
+        {
+          "port": 80,
+          "protocol": "TCP"
+        }
+      ],
+      "type": "Public"
+    },
+    "location": "eastus",
+    "name": "hellofiles",
+    "networkProfile": null,
+    "osType": "Linux",
+    "provisioningState": "Succeeded",
+    "resourceGroup": "shared-resource",
+    "restartPolicy": "Always",
+    "tags": {},
+    "type": "Microsoft.ContainerInstance/containerGroups",
+    "volumes": [
+      {
+        "azureFile": {
+          "readOnly": null,
+          "shareName": "sshkeys",
+          "storageAccountKey": null,
+          "storageAccountName": "sftpkeys8050"
+        },
+        "emptyDir": null,
+        "gitRepo": null,
+        "name": "azurefile",
+        "secret": null
+      }
+    ]
+  }
+]
