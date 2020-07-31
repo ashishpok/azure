@@ -5,3 +5,9 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fsftpstgobp
 https://sftpstgobpqipaqd4aci.blob.core.windows.net/sftp-cert-template/azuredeploy.json
 
 70.106.221.24
+
+
+-- use raw github file
+https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fashishpok%2Fazure%2Fmaster%2Fsftp-cert-based-template%2Fazuredeploy.json
+
+https://unifysftp.file.core.windows.net/templates/azuredeploy.json
